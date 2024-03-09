@@ -1,8 +1,7 @@
 
 import React, { Suspense, lazy } from "react";
 import { createBrowserRouter } from 'react-router-dom';
-
-const Loading = lazy(() => import('../components/Loading'));
+import Loading from '../components/Loading';
 
 const Main = lazy(() => import('../pages/main'));
 const MessageMain = lazy(() => import('../pages/message/message-main'));
@@ -11,6 +10,10 @@ const MessageWrite = lazy(() => import('../pages/message/message-write'));
 const MessageEdit = lazy(() => import('../pages/message/message-edit'));
 const MessagePreview = lazy(() => import('../pages/message/message-preview'));
 const MessageInbox = lazy(() => import('../pages/message/message-inbox'));
+
+const MessageEditBg = lazy(() => import('../pages/message/message-edit-bg'));
+const MessageEditText = lazy(() => import('../pages/message/message-edit-text'));
+const MessageEditAttach = lazy(() => import('../pages/message/message-edit-attatch'));
 
 const ServiceMain = lazy(() => import('../pages/service/service-main'));
 const ServiceNotice = lazy(() => import('../pages/service/service-notice'));
@@ -42,6 +45,27 @@ export const router = createBrowserRouter([
     element:
     <Suspense fallback={<Loading />}>
       <MessageWrite />
+    </Suspense>
+  },
+  {
+    path: 'message/edit-bg',
+    element:
+    <Suspense fallback={<Loading />}>
+      <MessageEditBg />
+    </Suspense>
+  },
+  {
+    path: 'message/edit-text',
+    element:
+    <Suspense fallback={<Loading />}>
+      <MessageEditText />
+    </Suspense>
+  },
+  {
+    path: 'message/edit-attatch',
+    element:
+    <Suspense fallback={<Loading />}>
+      <MessageEditAttach />
     </Suspense>
   },
   {

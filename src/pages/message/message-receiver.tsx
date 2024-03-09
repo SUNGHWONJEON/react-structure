@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { receiverData } from '../../types/attach.type';
+import { messageData, receiverData } from '../../types/attach.type';
 import Receiver from '../../components/Receiver';
 import { useParams } from 'react-router-dom';
 import AddReceiver from '../../components/AddReceiver';
@@ -38,6 +38,34 @@ export default function MessageReciever() {
     const updateList = receiverList.filter(item => item.receiverId != receiverId);
     setReceiverList(updateList);
   }
+
+  const msgData: unknown = [
+    {
+      msgId: 'msg-1',
+      msgText: '사랑한당',
+      createDate: new Date('2024/01/09'),
+      modifyDate: new Date('2024/01/09'),
+      deleteDate: null,
+      attach: [
+        {
+          msgId: 'msg-1',
+          attachId: 'att-1',
+          attachName: 'love.jpg',
+          attachSize: 20230,
+          attachType: 'img',
+          attachPath: '../sds'
+        },
+        {
+          msgId: 'msg-1',
+          attachId: 'att-2',
+          attachName: 'love22.jpg',
+          attachSize: 20230,
+          attachType: 'img',
+          attachPath: '../sds'
+        }
+      ]
+    }
+  ]
   
   /*
   const updateList = message.msgList.filter(item => item.msgId !== id);
@@ -78,7 +106,7 @@ export default function MessageReciever() {
           })
         }
       </div>
-      <NextButton path={'/message/edit/' + msgId} title={'다음'}/>
+      <NextButton path={'/message/edit-bg'} item={msgData} title={'다음'}/>
     </>
   );
 }

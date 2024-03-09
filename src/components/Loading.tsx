@@ -1,6 +1,5 @@
 
-import React, { useEffect } from 'react';
-import { insuranceData } from '@/types/attach.type';
+import React from 'react';
 
 export default function Loading() {
   return(

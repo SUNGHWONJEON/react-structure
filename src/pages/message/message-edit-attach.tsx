@@ -5,6 +5,7 @@ import Headers from '../../components/Headers';
 import NextButton from '../../components/NextButton';
 import React, { ChangeEvent, useState } from 'react';
 import { useLocation } from 'react-router';
+import TestComponent from '../../components/TestComponent';
 
 export default function MessageEditAttach() {
   const location = useLocation();
@@ -130,6 +131,9 @@ export default function MessageEditAttach() {
       <AttachList attachList={attachList} attachListType='audio' onDeleteAttach={onDeleteAttach}/>{/* 첨부파일 보여지는 곳 */}
 
       <NextButton path='/message/edit-text' title='다음' item={state}></NextButton>
+      <TestComponent>
+        <div>칠드런</div>
+      </TestComponent>
     </>
   );
 }

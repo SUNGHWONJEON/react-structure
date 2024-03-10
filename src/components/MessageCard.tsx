@@ -23,9 +23,6 @@ export default function MessageCard(props: MessageCardProps) {
       minute: 'numeric'
     });
   }
-  useEffect(()=> {
-  
-  },[]);
   
   return(
     <>

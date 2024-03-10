@@ -13,11 +13,13 @@ export default function AttachCamera(props: attachCameraProps) {
   const videoChunks = useRef<Blob[]>([]); // 비디오 []
   const [mimeType, setMimeType] = useState<string>('video/webm'); // 비디오 타입
   const [isRecording, setIsRecording] = useState<boolean>(false); // 레코딩 중인지 boolean
+  const [isReadyRecording, setIsReadyRecording] = useState<boolean>(false); // 완료 되었는지 boolean
   const [showCompleted, setShowCompleted] = useState<boolean>(false); // 완료 되었는지 boolean
+  
   const [thumbnail, setThumbnail] = useState<string>('');
 
   // 권한 얻기 및 미디어 녹화 시작
-  const startRecording = useCallback(async () => {
+  const readyToRecording = useCallback(async () => {
     try {
       const videoConstraints: MediaStreamConstraints = {
         audio: false,
@@ -48,20 +50,20 @@ export default function AttachCamera(props: attachCameraProps) {
       };
 
       mediaRecorder.current = recorder;
-      mediaRecorder.current?.start();
+      setIsReadyRecording(true);
       console.log('recorder : ' + JSON.stringify(recorder));
     } catch (err) {
       console.log(err);
     }
   }, [mimeType]);
 
-
   const handleStartRecording = () => {
     setIsRecording(true);
-    startRecording();
+    mediaRecorder.current?.start();
   };
 
   const handleStopRecording = () => {
+    setIsReadyRecording(false);
     setIsRecording(false);
     setShowCompleted(true);
     if (mediaRecorder.current) {
@@ -108,7 +110,7 @@ export default function AttachCamera(props: attachCameraProps) {
   };
 
   const displaySet = () => {
-    const display = !isRecording ? 'none' : 'block';
+    const display = !isReadyRecording ? 'none' : 'block';
     return display;
   };
 
@@ -120,24 +122,25 @@ export default function AttachCamera(props: attachCameraProps) {
 
   return (
     <div className="camera-container">
+      <button onClick={readyToRecording}>녹화 준비</button>
       {!isRecording && !showCompleted && (
-        <button onClick={handleStartRecording}>Start Recording</button>
+        <button onClick={handleStartRecording}>녹화 시작</button>
       )}
       {isRecording && (
-        <button onClick={handleStopRecording}>Stop Recording</button>
+        <button onClick={handleStopRecording}>녹화 정지</button>
       )}
       {!isRecording && showCompleted && (
         <>
-          <button onClick={handleCompleted}>Completed</button>
+          <button onClick={handleCompleted}>녹화 완료</button>
           {thumbnail && (
             <img src={thumbnail} alt="Thumbnail" />
           )}
         </>
       )}
-      <video ref={videoRef} className="camera-video" autoPlay={isRecording} style={{ display: displaySet() }}/>
+      <video ref={videoRef} className="camera-video" autoPlay={isReadyRecording} style={{ width: '100%', display: displaySet() }}/>
       
       <canvas ref={thumbnailCanvasRef} style={{ display: 'none' }} />
-      <button onClick={downloadVideo}>Download</button>
+      <button onClick={downloadVideo}>다운로드</button>
     </div>
   );
 }

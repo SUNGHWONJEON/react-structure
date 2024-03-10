@@ -3,6 +3,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import Headers from '../../components/Headers';
 import SwiperCard from '../../components/SwiperCard';
+import NextButton from '../../components/NextButton';
 
 export default function MessageEditBg() {
   const navigate = useNavigate();
@@ -10,6 +11,9 @@ export default function MessageEditBg() {
   const state = location.state;
   const swiperList = [
     '/img/swiper_1.png',
+    '/img/swiper_2.png',
+    '/img/swiper_2.png',
+    '/img/swiper_2.png',
     '/img/swiper_2.png',
   ]
 
@@ -22,6 +26,7 @@ export default function MessageEditBg() {
     <>
       <Headers />
       <SwiperCard swiperList={swiperList} onSelectMessageBg={onSelectMessageBg} />
+      <NextButton path='/message/edit-text' title='다음' item={state}></NextButton>
     </>
   );
 }

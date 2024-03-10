@@ -10,10 +10,6 @@ interface ReceiverProps {
 export default function Receiver(props: ReceiverProps) {
   const { item, onDeleteReceiver } = props;
   
-  useEffect(()=> {
-    
-  },[]);
-  
   return(
     <>
       <div>

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
-import './swiperStyle.css';
+import './swiperCardStyle.css';
 import { EffectCards } from 'swiper/modules';
 
 interface cardProps {

@@ -16,10 +16,6 @@ export default function IntroCustomer() {
     deleteDate: null
   }
 
-  useEffect(()=> {
-  
-  },[]);
-
   const onClick = () => {
     navigate('/message');
   }

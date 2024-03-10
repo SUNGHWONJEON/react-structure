@@ -17,11 +17,7 @@ export default function MessageMain() {
       insuranceNumber: '202323232'
     }
   ]
-  
-  useEffect(()=> {
-  
-  },[]);
-  
+
   //증권번호 입력
   const onGotoMessageWrite = (msgId: string) => {
     console.log('증권번호 : ' + msgId);

@@ -14,6 +14,7 @@ const MessageInbox = lazy(() => import('../pages/message/message-inbox'));
 const MessageEditBg = lazy(() => import('../pages/message/message-edit-bg'));
 const MessageEditText = lazy(() => import('../pages/message/message-edit-text'));
 const MessageEditAttach = lazy(() => import('../pages/message/message-edit-attach'));
+const MessageEditAttachTest = lazy(() => import('../pages/message/message-edit-attach-test'));
 
 const ServiceMain = lazy(() => import('../pages/service/service-main'));
 const ServiceNotice = lazy(() => import('../pages/service/service-notice'));
@@ -66,6 +67,13 @@ export const router = createBrowserRouter([
     element:
     <Suspense fallback={<Loading />}>
       <MessageEditAttach />
+    </Suspense>
+  },
+  {
+    path: 'message/edit-attach/test',
+    element:
+    <Suspense fallback={<Loading />}>
+      <MessageEditAttachTest />
     </Suspense>
   },
   {

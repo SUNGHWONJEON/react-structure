@@ -2,7 +2,8 @@ import { userData } from "@/types/attach.type";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
-import LoginForm from "../../components/LoginForm";
+import LoginForm from "../../components/LoginFormYup";
+import LoginKakao from "../../components/LoginKakao";
 
 const ContainerWrapper = styled.div`
   margin: 0 auto;
@@ -33,6 +34,7 @@ export default function IntroCustomer() {
       <ContainerWrapper>
         <LoginForm />
         <button onClick={handleGoToMessage}>메시지 작성</button>
+        <LoginKakao />
       </ContainerWrapper>
     </>
   );

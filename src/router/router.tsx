@@ -4,6 +4,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import Loading from '../components/Loading';
 
 const Main = lazy(() => import('../pages/main'));
+
+const IntroCustmoer = lazy(() => import('../pages/intro/intro-customer'));
+
 const MessageMain = lazy(() => import('../pages/message/message-main'));
 const MessageReciever = lazy(() => import('../pages/message/message-receiver'));
 const MessageWrite = lazy(() => import('../pages/message/message-write'));
@@ -26,6 +29,13 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />
+  },
+  {
+    path: 'login',
+    element: 
+    <Suspense fallback={<Loading />}>
+      <IntroCustmoer />
+    </Suspense>
   },
   {
     path: 'message',
